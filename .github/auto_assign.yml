@@ -1,0 +1,10 @@
+# Set to true to add assignees to pull requests
+addAssignees: true
+
+# A list of assignees to be added to pull requests (GitHub user name)
+assignees:
+  - Aaron-K-T-Berry
+
+# A number of assignees to add to the pull request
+# Set to 0 to add all of the assignees.
+numberOfAssignees: 1
