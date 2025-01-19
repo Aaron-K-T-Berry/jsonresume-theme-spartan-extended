@@ -411,7 +411,7 @@
 
                                     {{#if website}}
                                         <span class="website">
-                                            <a href="{{website}}">{{name}}</a>
+                                            <a href="{{website}}" target="_blank">{{name}}</a>
                                         </span>
                                     {{else}}
                                         {{name}}
@@ -435,6 +435,44 @@
                                 <div class="summary">
                                     <p>{{summary}}</p>
                                 </div>
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                </section>
+            </section>
+        {{/if}}
+
+        {{#if resume.certificates.length}}
+            <section class="section">
+                <h2 class='section-title'>Certificates</h2>
+                <section id="certificates">
+
+                    {{#each resume.certificates}}
+                        <div class="item">
+
+                            {{#if name}}
+                                <span class="name">
+
+                                    {{#if url}}
+                                        <span class="website">
+                                            <a href="{{url}}" target="_blank">{{name}}</a>
+                                        </span>
+                                    {{else}}
+                                        {{name}}
+                                    {{/if}}
+                                </span>
+                            {{/if}}
+
+                            {{#if issuer}}
+                                <span class="issuer">
+                                    {{issuer}},
+                                </span>
+                            {{/if}}
+
+                            {{#if date}}
+                                <span class="date">
+                                    {{DMY date}}
+                                </span>
                             {{/if}}
                         </div>
                     {{/each}}
