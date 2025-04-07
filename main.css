@@ -163,7 +163,7 @@ strong {
 }
 
 ul {
-	margin-top: 0.5em;
+	margin-top: 1em;
 }
 
 div.item {
@@ -537,6 +537,7 @@ h2.section-title {
 *		TABLET
 ****************/
 @media screen and (min-width: 602px) {
+
 	#resume {
 		width: 550px;
 		margin: 0 auto;
