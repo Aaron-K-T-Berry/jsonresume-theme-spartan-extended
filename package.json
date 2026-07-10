@@ -15,13 +15,13 @@
 	},
 	"devDependencies": {
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/npm": "^8.0.3",
+		"@semantic-release/npm": "^13.1.5",
 		"commitizen": "^4.2.4",
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^3.1.0",
 		"prettier": "^2.5.1",
 		"resume-cli": "^3.0.5",
-		"semantic-release": "^19.0.3",
+		"semantic-release": "^25.0.5",
 		"semantic-release-cli": "^5.4.4"
 	},
 	"scripts": {
