@@ -15,7 +15,6 @@ jobs:
         with:
           script: |
             const username = "Aaron-K-T-Berry";
-
             await github.rest.issues.addAssignees({
               owner: context.repo.owner,
               repo: context.repo.repo,
