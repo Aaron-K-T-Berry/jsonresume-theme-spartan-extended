@@ -7,21 +7,34 @@
 		"type": "git",
 		"url": "https://github.com/Aaron-K-T-Berry/jsonresume-theme-spartan.git"
 	},
-	"license": "MIT",
-	"dependencies": {
+  "license": "MIT",
+  "engines": {
+    "node": "^22.14.0 || >=24.10.0"
+  },
+  "files": [
+    "assets/",
+    "images/",
+    "index.js",
+    "main.css",
+    "resume.hbs",
+    "resume.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
 		"country-code-lookup": "^0.0.20",
 		"handlebars": "^4.7.7",
 		"moment": "^2.29.1"
 	},
 	"devDependencies": {
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/npm": "^8.0.3",
+		"@semantic-release/npm": "^13.1.5",
 		"commitizen": "^4.2.4",
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^3.1.0",
 		"prettier": "^2.5.1",
 		"resume-cli": "^3.0.5",
-		"semantic-release": "^19.0.3",
+		"semantic-release": "^25.0.5",
 		"semantic-release-cli": "^5.4.4"
 	},
 	"scripts": {

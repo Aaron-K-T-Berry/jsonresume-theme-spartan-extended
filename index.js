@@ -1,14 +1,69 @@
 var fs = require("fs");
+var path = require("path");
 var Handlebars = require("handlebars");
 var moment = require("moment");
 var lookup = require("country-code-lookup");
 
+var FONT_MIME = {
+  ".woff2": "font/woff2",
+  ".woff": "font/woff",
+};
+
+/**
+ * Load Font Awesome CSS and rewrite woff/woff2 font urls to data URIs so
+ * rendered HTML works offline (including Puppeteer PDF exports). Legacy
+ * eot/ttf/svg formats are dropped — Chromium does not need them.
+ */
+function loadFontAwesomeCss() {
+  var assetsDir = path.join(__dirname, "assets", "font-awesome");
+  var fontsDir = path.join(assetsDir, "fonts");
+  var css = fs.readFileSync(
+    path.join(assetsDir, "font-awesome.min.css"),
+    "utf-8"
+  );
+
+  // Drop the IE-only first src and legacy format clauses.
+  css = css
+    .replace(
+      /src:url\('\.\.\/fonts\/fontawesome-webfont\.eot\?v=4\.7\.0'\);/,
+      ""
+    )
+    .replace(
+      /url\('\.\.\/fonts\/fontawesome-webfont\.eot\?#iefix&v=4\.7\.0'\) format\('embedded-opentype'\),/,
+      ""
+    )
+    .replace(
+      /,url\('\.\.\/fonts\/fontawesome-webfont\.ttf\?v=4\.7\.0'\) format\('truetype'\)/,
+      ""
+    )
+    .replace(
+      /,url\('\.\.\/fonts\/fontawesome-webfont\.svg\?v=4\.7\.0#fontawesomeregular'\) format\('svg'\)/,
+      ""
+    );
+
+  return css.replace(
+    /url\('\.\.\/fonts\/([^'?#]+)([^']*)'\)/g,
+    function (_match, fileName, query) {
+      var ext = path.extname(fileName).toLowerCase();
+      var mime = FONT_MIME[ext];
+      var fontPath = path.join(fontsDir, fileName);
+      if (!mime || !fs.existsSync(fontPath)) {
+        throw new Error("Missing Font Awesome font file: " + fileName);
+      }
+      var data = fs.readFileSync(fontPath).toString("base64");
+      return "url('data:" + mime + ";base64," + data + query + "')";
+    }
+  );
+}
+
 var render = (resume) => {
   var main_css = fs.readFileSync(__dirname + "/main.css", "utf-8");
+  var fontAwesomeCss = loadFontAwesomeCss();
   var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
 
   return Handlebars.compile(tpl)({
     css: main_css,
+    fontAwesomeCss: fontAwesomeCss,
     resume: resume,
   });
 };

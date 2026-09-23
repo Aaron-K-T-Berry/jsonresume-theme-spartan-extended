@@ -58,6 +58,11 @@ Check out the [examples](#Examples) below.
 
   - Added optional summary line for skill
 
+- Icons
+
+  - Vendors Font Awesome 4.7.0 locally and inlines CSS + webfonts as data URIs
+  - No longer loads Font Awesome from MaxCDN (which served the outdated 4.4.0 build)
+
 ## Examples
 
 |                       HTML Full                       |                     HTML Mobile                     |
