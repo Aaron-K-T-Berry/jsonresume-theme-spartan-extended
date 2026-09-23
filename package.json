@@ -7,8 +7,18 @@
 		"type": "git",
 		"url": "https://github.com/Aaron-K-T-Berry/jsonresume-theme-spartan.git"
 	},
-	"license": "MIT",
-	"dependencies": {
+  "license": "MIT",
+  "files": [
+    "assets/",
+    "images/",
+    "index.js",
+    "main.css",
+    "resume.hbs",
+    "resume.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
 		"country-code-lookup": "^0.0.20",
 		"handlebars": "^4.7.7",
 		"moment": "^2.29.1"
